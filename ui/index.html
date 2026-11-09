@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>云记事</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="side-head">
+      <div class="brand">云记事</div>
+      <div id="srv-info" class="sub">启动中…</div>
+    </div>
+
+    <div class="tabs">
+      <button id="tab-notes" class="tab active">笔记 <span id="cnt-notes" class="badge">0</span></button>
+      <button id="tab-groups" class="tab">分组</button>
+      <button id="tab-history" class="tab">历史</button>
+      <button id="tab-trash" class="tab">回收站 <span id="cnt-trash" class="badge">0</span></button>
+    </div>
+    <div id="batch-bar" class="batch-bar hidden">
+      <button id="btn-batch" class="ghost">☑ 多选</button>
+      <button id="btn-batch-del" class="danger hidden">删除所选 (0)</button>
+    </div>
+
+    <ul id="note-list"></ul>
+
+    <div class="side-foot">
+      <div class="row2">
+        <button id="btn-new-text">📝 新建文字</button>
+        <button id="btn-new-ink">✍️ 新建手写</button>
+      </div>
+      <button id="btn-purge-all" class="danger hidden">清空回收站</button>
+      <button id="btn-open-dir" class="ghost">📁 打开笔记目录</button>
+      <button id="btn-firewall" class="ghost">🛡️ 防火墙放行</button>
+      <div class="sync-row">
+        <span id="sync-line" class="sync-line">手机尚未连接过</span>
+        <button id="btn-copy-addr" class="link">复制地址</button>
+      </div>
+      <div id="dir-info" class="dir"></div>
+    </div>
+  </aside>
+
+  <main id="main">
+    <div id="empty">选择左侧笔记，或新建一条</div>
+
+    <div id="historyview" class="hidden">
+      <div class="hist-head">操作历史 <span class="sub">新建、修改、移动、删除的完整记录（与手机端互通）</span></div>
+      <ul id="hist-list"></ul>
+    </div>
+
+    <div id="editor" class="hidden">
+      <input id="ed-title" placeholder="标题" maxlength="80">
+      <div id="ed-meta"></div>
+      <div id="ed-pages" class="page-bar"></div>
+      <textarea id="ed-content" placeholder="开始记录…"></textarea>
+      <div class="ed-bar">
+        <button id="ed-save">保存</button>
+        <span id="ed-tip">已保存到本机；手机端回到 App 会自动接收</span>
+      </div>
+    </div>
+
+    <div id="inkview" class="hidden">
+      <div class="ink-head">
+        <span id="ink-title">手写笔记</span>
+        <span id="ink-hint">0 笔</span>
+      </div>
+      <div class="ink-stage"><canvas id="ink-canvas"></canvas></div>
+      <div class="ink-tools">
+        <button data-act="prev">‹ 上页</button>
+        <span id="ink-page" class="page-ind">1 / 1</span>
+        <button data-act="next">下页 ›</button>
+        <button data-act="add">＋ 加页</button>
+        <span class="spacer"></span>
+        <button data-act="undo">↩ 撤销</button>
+        <button data-act="erase-all">🗑 清空本页</button>
+        <button data-act="fit">⤢ 适应画面</button>
+        <span class="tip">鼠标 / 数位笔书写</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="menu" class="menu hidden"></div>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <div id="mo-title" class="mo-title">提示</div>
+    <div id="mo-msg" class="mo-msg"></div>
+    <input id="mo-input" class="hidden" maxlength="80">
+    <div class="mo-btns">
+      <button id="mo-cancel" class="ghost">取消</button>
+      <button id="mo-ok" class="primary">确定</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

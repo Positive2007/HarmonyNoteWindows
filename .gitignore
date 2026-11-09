@@ -1,0 +1,21 @@
+# 依赖与构建产物
+node_modules/
+src-tauri/target/
+target/
+dist/
+
+# 安装包与可执行文件
+*.exe
+*.msi
+*.msix
+*.pdb
+
+# IDE / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 日志与临时文件
+*.log
+*.tmp
